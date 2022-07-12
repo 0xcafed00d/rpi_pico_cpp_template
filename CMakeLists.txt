@@ -14,9 +14,15 @@ add_executable(
 	src/main.cpp
 )
 
-target_link_libraries(${CMAKE_PROJECT_NAME} pico_stdlib)
+if("${PICO_BOARD}" MATCHES "pico_w")
+	target_link_libraries(${CMAKE_PROJECT_NAME}
+		pico_stdlib
+		pico_cyw43_arch_none)
+else()
+	target_link_libraries(${CMAKE_PROJECT_NAME} pico_stdlib)
+endif()
 
 pico_enable_stdio_usb(${CMAKE_PROJECT_NAME} 1)
-#pico_enable_stdio_uart(${CMAKE_PROJECT_NAME} 1)
 
+# pico_enable_stdio_uart(${CMAKE_PROJECT_NAME} 1)
 pico_add_extra_outputs(${CMAKE_PROJECT_NAME})

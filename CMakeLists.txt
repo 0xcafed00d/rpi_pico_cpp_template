@@ -12,6 +12,7 @@ pico_sdk_init()
 add_executable(
 	${CMAKE_PROJECT_NAME}
 	src/main.cpp
+	src/led.cpp
 )
 
 if("${PICO_BOARD}" MATCHES "pico_w")
